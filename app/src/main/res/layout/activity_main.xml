@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gamepad_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGamepadOff">
+
+    <TableLayout
+        android:id="@+id/ModeButtonLayout"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/statusLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="@dimen/text_space_width"
+                android:layout_height="@dimen/dpad_button_size"
+                android:padding="@dimen/button_padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/first_column"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/second_column"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/third_column"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/fourth_column"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/walk_row"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/button_id_W1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_W1s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_W2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_W2s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_W3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_W3s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_W4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_W4s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/dance_row"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/button_id_D1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_D1s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_D2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_D2s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_D3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_D3s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_D4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_D4s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/fight_row"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/button_id_F1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_F1s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_F2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_F2s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_F3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_F3s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_F4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_F4s"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/button_padding"
+                android:text="@string/record_row"
+                android:textAlignment="center"
+                android:textColor="@color/colorModeText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/button_id_R1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_R1"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_R2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_R2"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_R3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_R3"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+
+            <ImageButton
+                android:id="@+id/button_id_R4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="@string/message_action_R4"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/mode_button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="@dimen/text_space_width"
+                android:layout_height="@dimen/dpad_button_size"
+                android:padding="@dimen/button_padding" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/record_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/record_icon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/play_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/play_icon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/rewind_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/rewind_icon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/erase_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/erase_icon" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="@dimen/text_space_width"
+                android:layout_height="@dimen/dpad_button_size"
+                android:padding="@dimen/button_padding" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/stop_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/stop_icon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/pause_icon"
+                android:padding="@dimen/button_padding"
+                app:srcCompat="@drawable/pause_icon" />
+
+            <Space
+                android:layout_width="@dimen/text_space_width"
+                android:layout_height="@dimen/dpad_button_size"
+                android:padding="@dimen/button_padding" />
+
+            <Space
+                android:layout_width="@dimen/text_space_width"
+                android:layout_height="@dimen/dpad_button_size"
+                android:padding="@dimen/button_padding" />
+        </TableRow>
+    </TableLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ModeButtonLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/aboveStatusLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/text_id_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableLayout
+                android:id="@+id/DPadButtonLayout"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/VorpalIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Space
+                        android:layout_width="@dimen/dpad_button_size"
+                        android:layout_height="@dimen/dpad_button_size"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/button_padding" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button_id_SPECIAL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:contentDescription="@string/dpad_button_w"
+                        android:padding="@dimen/button_padding"
+                        app:srcCompat="@drawable/dpad_button" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Space
+                        android:layout_width="@dimen/dpad_button_size"
+                        android:layout_height="@dimen/dpad_button_size"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/button_padding" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button_id_FORWARD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:contentDescription="@string/dpad_button_w"
+                        android:padding="@dimen/button_padding"
+                        app:srcCompat="@drawable/dpad_button" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/button_id_LEFT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/dpad_button_l"
+                            android:padding="@dimen/button_padding"
+                            app:srcCompat="@drawable/dpad_button" />
+
+                        <ImageButton
+                            android:id="@+id/button_id_RIGHT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/dpad_button_r"
+                            android:padding="@dimen/button_padding"
+                            app:srcCompat="@drawable/dpad_button" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button_id_BACKWARD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:contentDescription="@string/dpad_button_b"
+                        android:padding="@dimen/button_padding"
+                        app:srcCompat="@drawable/dpad_button" />
+                </TableRow>
+            </TableLayout>
+
+            <ImageView
+                android:id="@+id/VorpalIcon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/logo"
+                app:srcCompat="@drawable/vtrans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/controlLayout"
+                app:layout_constraintStart_toEndOf="@+id/DPadButtonLayout"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <LinearLayout
+                android:id="@+id/controlLayout"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/VorpalIcon"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/power_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/power_button_border"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button_id_POWER_ON"
+                        android:layout_width="@dimen/power_button_size"
+                        android:layout_height="@dimen/power_button_size"
+                        android:background="@color/colorPowerButton"
+                        android:text="@string/on_button"
+                        android:textColor="@color/colorPowerButtonText" />
+
+                    <Button
+                        android:id="@+id/button_id_POWER_OFF"
+                        android:layout_width="@dimen/power_button_size"
+                        android:layout_height="@dimen/power_button_size"
+                        android:background="@color/colorPowerButtonPressed"
+                        android:text="@string/off_button"
+                        android:textColor="@color/colorPowerButtonText" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/control_vertical_spacing" />
+
+                <ImageButton
+                    android:id="@+id/button_id_HELP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:contentDescription="@string/help_button"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/help_icon" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/control_vertical_spacing" />
+
+                <ImageButton
+                    android:id="@+id/button_id_SETTINGS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:contentDescription="@string/settings_button"
+                    app:srcCompat="@drawable/settings_icon" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/control_vertical_spacing" />
+
+                <ImageButton
+                    android:id="@+id/button_id_BLUETOOTH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:contentDescription="@string/bluetooth_button"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/bluetooth_button_disconnected" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/control_vertical_spacing" />
+
+                <ImageView
+                    android:id="@+id/image_id_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/state_icon"
+                    app:srcCompat="@drawable/no_state" />
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_id_message"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="@string/message_wait"
+            android:textColor="@color/colorMessageError"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboveStatusLayout" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

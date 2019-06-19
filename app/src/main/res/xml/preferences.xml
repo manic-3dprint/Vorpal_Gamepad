@@ -1,0 +1,32 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <PreferenceCategory android:key="MAIN_CATEGORY">
+        <CheckBoxPreference
+            android:key="SDcard"
+            android:title="@string/preferences_use_SDcard"
+            android:summary="@string/preferences_use_SDcard_summary"
+            android:defaultValue="true"
+            />
+        <CheckBoxPreference
+            android:key="sound"
+            android:title="@string/preferences_sound"
+            android:summary="@string/preferences_sound_summary"
+            android:defaultValue="true"
+            />
+        <CheckBoxPreference
+            android:key="connectBluetoothAutomatically"
+            android:title="@string/preferences_connect_bluetooth_automatically"
+            android:summary="@string/preferences_connect_bluetooth_automatically_summary"
+            android:defaultValue="true"
+            />
+        <EditTextPreference
+            android:key="bluetoothSpeed"
+            android:title="@string/preferences_bluetooth_speed"
+            android:summary="@string/preferences_bluetooth_speed_summary"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:defaultValue="9600"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

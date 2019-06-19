@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">24sp</dimen>
+    <dimen name="mode_button_size">20dp</dimen>
+    <dimen name="dpad_button_size">40dp</dimen>
+    <dimen name="dpad_button_half_size">20dp</dimen>
+    <dimen name="button_padding">5dp</dimen>
+    <dimen name="text_space_width">10dp</dimen>
+    <dimen name="control_vertical_spacing">10dp</dimen>
+    <dimen name="power_button_size">30dp</dimen>
+    <dimen name="power_button_border">5dp</dimen>
+    <dimen name="icon_size">30dp</dimen>
+    <dimen name="logo_size">200dp</dimen>
+</resources>

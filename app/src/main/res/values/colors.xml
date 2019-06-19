@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorModeText">#606060</color>
+    <color name="colorModeButton">#000000</color>
+    <color name="colorModeButtonPressed">#808080</color>
+    <color name="colorDPadButton">#FFFF00</color>
+    <color name="colorDPadButtonPressed">#808000</color>
+    <color name="colorPowerButton">#C00000</color>
+    <color name="colorPowerButtonPressed">#FF0000</color>
+    <color name="colorPowerButtonText">#FFFFFF</color>
+    <color name="colorPowerButtonBorder">#000000</color>
+    <color name="colorGamepadOff">#C0C0C0</color>
+    <color name="colorGamepadOn">#FFFFFF</color>
+    <color name="colorIcon">#606060</color>
+    <color name="colorNotRecording">#000000</color>
+    <color name="colorState">#FF0000</color>
+    <color name="colorMessageError">#FF0000</color>
+    <color name="colorMessageScratch">#00FF00</color>
+    <color name="colorMessage">#000000</color>
+    <color name="colorBluetoothDisconnected">#000000</color>
+    <color name="colorBluetoothConnected">#0000FF</color>
+    <color name="colorBluetoothError">#FF0000</color>
+    <color name="colorHelpText">#000000</color>
+    <color name="colorHelpBackground">#FFFFFF</color>
+</resources>
