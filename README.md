@@ -6,13 +6,13 @@ app to replace Gamepad for Vorpal Hexapod
 The Vorpal Hexapod is a remote control six legged spider robot toy.
 The web page is:
 https://vorpalrobotics.com/wiki/index.php/Vorpal_The_Hexapod
-<img src="https://vorpalrobotics.com/wiki/index.php/File:Scamp-Leg-Raised.jpg" alt="Vorpal Robot"/>
+<img src="https://vorpalrobotics.com/wiki/images/7/7b/Scamp-Leg-Raised.jpg" alt="Vorpal Robot"/>
 
 The Vorpal Hexapod consists of the Robot itself, and a Gamepad to control the Robot remotely by bluetooth.
 
 This is an Android app replacement for the Vorpal Gamepad.
 The app works the same as the Gamepad and looks similar
-<img src="https://vorpalrobotics.com/wiki/index.php/File:Gamepad-Top-View-v2.png" alt="Vorpal Gamepad"/>
+<img src="https://vorpalrobotics.com/wiki/images/9/93/Gamepad-Top-View-v2.png" alt="Vorpal Gamepad"/>
 <img src="Vorpal_Gamepad_main_screen.png" alt="Vorpal Gamepad app"/>
 
 ## Getting Started
