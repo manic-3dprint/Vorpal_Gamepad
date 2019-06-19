@@ -19,8 +19,7 @@ The app works the same as the Gamepad and looks similar.
 Get a Vorpal Robot, buy it or assemble it. You will need the Robot, but not the Gamepad. Please support Vorpal Robotics by buying from their store:
 https://vorpal-robotics-store.myshopify.com/collections/hexapod-kits/products/vorpal-the-hexapod-opts
 
-The Robot has an HC-05 Bluetooth receiver. If you bought the kit, the Gamepad and Robot will be paired. You do not want the HC-05 to be paired to the Robot. Recommended is to buy a separate HC-05 and replace the one in the Robot (that way you can put back the original if you want). The HC-05 needs to be 5V compatible. If you buy the HC-05 from Vorpal, it will be compatible and have speed 38400. If you
-buy it somewhere else, check the specs for 5V compatibility (not 3.3V), and check the speed, probably default of 9600.
+The Robot has an HC-05 Bluetooth receiver. If you bought the kit, the Gamepad and Robot will be paired. You do not want the HC-05 in the Robot to be paired to the Gamepad. Recommended is to buy a separate HC-05 and replace the one in the Robot (that way you can put back the original if you want). The HC-05 needs to be 5V compatible. If you buy the HC-05 from Vorpal, it will be compatible and have speed 38400. If you buy it somewhere else, check the specs for 5V compatibility (not 3.3V), and check the speed, probably default of 9600.
 
 You will need to pair your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
 
