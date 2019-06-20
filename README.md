@@ -10,10 +10,10 @@ https://vorpalrobotics.com/wiki/index.php/Vorpal_The_Hexapod
 
 The Vorpal Hexapod consists of the Robot itself, and a Gamepad to control the Robot remotely by bluetooth.
 
-The app works the same as the Gamepad and looks similar.
+The app works the same as the Gamepad (trim/recording/playing/ScratchX are all implemented) and looks similar.
 <img src="https://vorpalrobotics.com/wiki/images/9/93/Gamepad-Top-View-v2.png" alt="Vorpal Gamepad"/>
 <img src="Vorpal_Gamepad_main_screen.png" alt="Vorpal Gamepad app"/>
-trim/recording/playing/ScratchX are all implemented.
+
 ## Getting Started
 
 Get a Vorpal Hexapod Robot, buy it or assemble it. You will need the Robot, but not the Gamepad. Please support Vorpal Robotics by buying from their store:
@@ -54,6 +54,8 @@ Now, you can use the app just like the Gamepad.
 
 The app works just like the real Vorpal Gamepad, see the Guide at
 http://vorpalrobotics.com/wiki/index.php/Vorpal_The_Hexapod_Gamepad_User_Guide
+
+note - if the app and the Robot get unsynced, try turning off the Robot, counting to 10, and turning the Robot on again. (reconnect bluetooth if not set to automatic).
 
 The right hand side has additional options:
 - on/off button - this works like the power button on the Gamepad.

@@ -72,8 +72,7 @@ public class NanoHttpdScratchXServer extends NanoHTTPD implements ScratchXServer
         if (method == Method.GET)
         {
             Map<String, List<String>> parms = session.getParameters();
-            String hexData = null;
-            hexData = parms.get("hexData").get(0);
+            String hexData = parms.get("hexData").get(0);
             serialInput = hexStringToByteArray(hexData);
             Log.wtf(LOG_TAG, "serve result " + new String(serialInput) + ", " + serialInput.length + " ");
         }
@@ -89,6 +88,10 @@ public class NanoHttpdScratchXServer extends NanoHTTPD implements ScratchXServer
     @Override
     public byte[] getSerialInput()
     {
+        if (ArduinoThread.DEBUG_LOOP)
+        {
+            Log.wtf(LOG_TAG, "getSerialInput serialInput= " + new String(serialInput) + ", " + serialInput.length + " ");
+        }
         byte[] saveSerialInput = serialInput;
         serialInput = EMPTY_SERIAL_INPUT;
         return saveSerialInput;
