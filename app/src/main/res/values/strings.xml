@@ -122,6 +122,8 @@
     <string name="help_main">This is an app to replace the Vorpal Hexapod gamepad.\nThe gamepad usage guide is at:\n</string>
     <string name="help_main_2">http://vorpalrobotics.com/wiki/index.php/Vorpal_The_Hexapod_Gamepad_User_Guide.\n</string>
     <string name="help_main_3">To use the app, turn the robot on, go to the settings page and connect to the Bluetooth for your robot. Then return to the main page, and turn \"power on\".\n</string>
+    <string name="help_main_4">For the full help page, go to:\n</string>
+    <string name="help_main_5">https://github.com/sentamugo7/Vorpal_Gamepad/blob/master/README.md\n</string>
     <string name="help_main_view">Main View</string>
     <string name="help_buttons">Buttons:</string>
     <string name="help_power_button">The Power button works like the gamepad power switch.\n</string>
@@ -149,6 +151,6 @@
     <string name="preferences_bluetooth_paired_devices_help">note - The Bluetooth Device must be paired with this Android device, see:</string>
     <string name="preferences_bluetooth_paired_devices_URL">https://support.google.com/android/answer/9075925?hl=en</string>
     <string name="preferences_connect_to_scratchx">ScratchX</string>
-    <string name="preferences_connect_to_scratchx_summary">Connect to ScratchX over an http connection</string>
+    <string name="preferences_connect_to_scratchx_summary">Connect to ScratchX over wifi</string>
     <string name="preferences_done">Done</string>
 </resources>

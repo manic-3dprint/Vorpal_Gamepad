@@ -78,8 +78,8 @@ You will need to host web pages that the app can access by wifi. To host web pag
 - click on the Settings gear and find the ScratchX section.
 - copy the ip address in parenthesis - four numbers separated by periods.
 - exit the settings page on the app.
-- edit the Vorpal-Gamepad-App-Scratch.js file and replace the ???.???.???.??? with this ip address and save the file
-- open a browser on yur PC and go to web page (replace localhost with the hosted location of the file, if necessary)
+- edit the Vorpal-Gamepad-App-Scratch.js file and replace the ???.???.???.??? with this ip address and save the file.
+- open a browser on your PC and go to web page (replace localhost with the hosted location of the file, if necessary)
      http://scratchx.org/?url=http://localhost/Vorpal-Gamepad-App-Scratch.js#scratch
  
  You should now be able to control the Robot using ScratchX. This will work like using ScratchX with the real Gamepad.
