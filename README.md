@@ -12,7 +12,7 @@ The Vorpal Hexapod consists of the Robot itself, and a Gamepad to control the Ro
 
 The app works the same as the Gamepad (trim/recording/playing/ScratchX are all implemented) and looks similar.
 <img src="https://vorpalrobotics.com/wiki/images/9/93/Gamepad-Top-View-v2.png" alt="Vorpal Gamepad"/>
-<img src="Vorpal_Gamepad_main_screen.png" alt="Vorpal Gamepad app"/>
+<img src="images/Vorpal_Gamepad_main_screen.png" alt="Vorpal Gamepad app"/>
 
 ## Getting Started
 
