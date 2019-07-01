@@ -4,10 +4,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.vorpalrobotics.hexapod"
-        minSdkVersion 24
+        minSdkVersion 14
         targetSdkVersion 28
-        versionCode 2
-        versionName "0.91"
+        versionCode 3
+        versionName "0.92"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -26,6 +26,9 @@ android {
             path "src/main/cpp/CMakeLists.txt"
             version "3.10.2"
         }
+    }
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
     }
 }
 repositories {
