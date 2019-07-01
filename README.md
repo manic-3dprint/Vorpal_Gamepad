@@ -27,7 +27,7 @@ You will need the connection speed of the HC-05, the default speed is 9600. The 
 
 ### Prerequisites
 
-This app requires at least Android 7.0 (Nougat)
+This app requires at least Android Ice Cream Sandwich (4.0)
 
 ### Installing
 
