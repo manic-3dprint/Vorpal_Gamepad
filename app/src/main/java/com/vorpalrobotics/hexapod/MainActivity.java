@@ -12,6 +12,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
     static
     {
         System.loadLibrary("native-lib");
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
     /**
@@ -403,7 +405,7 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
             Log.wtf(LOG_TAG, "Gamepad powerOff");
         }
         ImageView stateIcon = findViewById(R.id.image_id_state);
-        stateIcon.setImageResource(R.drawable.no_state);
+        stateIcon.setImageResource(0);
         setNormalMessage();
     }
 
@@ -469,7 +471,7 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
     {
         TextView message = findViewById(R.id.text_id_message);
         message.setText(messageId);
-        message.setTextColor(getResources().getColor(colorId,null));
+        message.setTextColor(ContextCompat.getColor(this, colorId));
     }
 
     /**
@@ -642,7 +644,7 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
         private void displayStateIcon(byte[] status)
         {
             MainActivity activity = currentActivity.get();
-            int newStateId = R.drawable.no_state;
+            int newStateId = 0;
             String logMessage = "no State";
             if (activity.hasScratchXCommand)
             {

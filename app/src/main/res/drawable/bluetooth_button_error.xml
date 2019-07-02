@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <vector
-            android:width="50dp"
-            android:height="50dp"
-            android:viewportWidth="30"
-            android:viewportHeight="30">
+    <vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="50dp"
+        android:height="50dp"
+        android:viewportWidth="30"
+        android:viewportHeight="30">
 
-            <path
-                android:strokeColor="@color/colorBluetoothError"
-                android:strokeWidth="1.63"
-                android:pathData="m9.99,10.14 9.38,9.44 -4.52,5.47 v-19.55 l4.52,5.23 -9.38,9.19" />
-        </vector>
-    </item>
- </selector>
+        <path
+            android:strokeColor="@color/colorBluetoothError"
+            android:strokeWidth="1.63"
+            android:pathData="m9.99,10.14 9.38,9.44 -4.52,5.47 v-19.55 l4.52,5.23 -9.38,9.19" />
+    </vector>

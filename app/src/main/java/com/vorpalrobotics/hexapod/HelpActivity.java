@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -62,14 +61,5 @@ public class HelpActivity extends AppCompatActivity
 			NavUtils.navigateUpFromSameTask(this);
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	/**
-	 * The user clicked the done button
-	 * @param v the View
-	 */
-	public void clickDone(View v)
-	{
-		finish();
 	}
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorHelpBackground"
@@ -164,7 +166,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_width="@dimen/icon_size"
                 android:layout_gravity="end"
-                android:background="@drawable/help_icon"
+                app:srcCompat="@drawable/help_icon"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -183,7 +185,7 @@
             android:layout_below="@id/help_help_button"
             >
             <ImageView
-                android:background="@drawable/settings_icon"
+                app:srcCompat="@drawable/settings_icon"
                 android:layout_height="@dimen/icon_size"
                 android:layout_width="@dimen/icon_size"
                 />
@@ -207,7 +209,7 @@
                 android:id="@+id/button_id_bluetooth"
                 android:layout_height="@dimen/icon_size"
                 android:layout_width="@dimen/icon_size"
-                android:src="@drawable/bluetooth_button_connected"
+                app:srcCompat="@drawable/bluetooth_button_connected"
                 android:layout_gravity="end"
                 android:contentDescription="@string/bluetooth_button"
                 />
@@ -239,7 +241,7 @@
                 android:id="@+id/image_id_recording"
                 android:layout_height="@dimen/icon_size"
                 android:layout_width="@dimen/icon_size"
-                android:src="@drawable/gamepad_recording_state"
+                app:srcCompat="@drawable/gamepad_recording_state"
                 android:layout_gravity="end"
                 android:contentDescription="@string/help_state"
                 />
@@ -450,15 +452,6 @@
             android:textStyle="bold"
             android:textColor="@color/colorHelpText"
             android:text="\n"
-            />
-        <Button
-            android:id="@+id/done_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/help_preferences_connect_to_scratchx_detail_crlf"
-            android:layout_gravity="center"
-            android:text="@string/help_done"
-            android:onClick="clickDone"
             />
     </RelativeLayout>
 </ScrollView>

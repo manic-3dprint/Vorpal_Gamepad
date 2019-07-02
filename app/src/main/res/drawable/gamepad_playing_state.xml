@@ -4,10 +4,7 @@
         android:width="50dp"
         android:viewportHeight="30"
         android:viewportWidth="30" >
-        <path
-            android:fillColor="@color/colorState"
-            android:pathData="M28,0 28,30 12,15z" />
-        <path
-            android:fillColor="@color/colorState"
-            android:pathData="M16,0 16,30 0,15z" />
+            <path
+                android:fillColor="@color/colorState"
+                android:pathData="M2,0 2,30 28,15z" />
     </vector>
