@@ -34,7 +34,7 @@ import java.util.TimerTask;
  */
 public class MainActivity extends AppCompatActivity implements ConnectBTCaller, ArduinoThreadCaller
 {
-    public static final boolean DEBUG = true; // Set to true to get more debug messages
+    public static final boolean DEBUG = false; // Set to true to get more debug messages
     private static final int IS_SETTINGS_CHANGED_REQUEST = 1;  // The preferences request code
     private static final String LOG_TAG = "DEBUG_MAIN"; // key for debug messages in Logcat
     private static final String DEFAULT_MODE = "W1"; // initial mode

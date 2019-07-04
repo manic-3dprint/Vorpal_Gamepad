@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 public class ArduinoThread extends Thread {
     private static final int ARDUINO_THREAD_DELAY = 100; // arduino thread sleep milliseconds
     private static final int ARDUINO_COMMAND_DELAY = 2000; // arduino thread sleep milliseconds
-    public static final boolean DEBUG_LOOP = true; // Set to true to get debug messages in loop - a whole lot of debug output
+    public static final boolean DEBUG_LOOP = false; // Set to true to get debug messages in loop - a whole lot of debug output
     private static final String LOG_TAG = "DEBUG_ARDUINO"; // key for debug messages in Logcat
     private static final int CHECK_CONSECUTIVE_BLUETOOTH_ERRORS = 8; // number of consecutive bluetooth errors before disconnect bluetooth
     private ArduinoThreadCaller callingActivity; // interface of MainActivity
