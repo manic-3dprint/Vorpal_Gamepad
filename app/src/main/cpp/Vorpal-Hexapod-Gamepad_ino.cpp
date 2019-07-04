@@ -66,7 +66,7 @@ SOFTWARE.
 
 int debugmode = 1;          // Set to 1 to get more debug messages. Warning: this may make Scratch unstable so don't leave it on.
 
-#define DEBUG_SD  0         // Set this to 1 if you want debugging info about the SD card and record/play functions.
+#define DEBUG_SD  1         // Set this to 1 if you want debugging info about the SD card and record/play functions.
 // This is very verbose and may affect scratch performance so only do it if you have to.
 // You will likely see things running slower than normal in scratch record/play mode for example.
 // It also takes up a lot of memory and you might get warnings from Arduino about too little

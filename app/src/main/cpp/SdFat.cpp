@@ -181,7 +181,36 @@ int File::available()
     checkError("File::available fseek 2");
     return (int)(lSize - lCurrent);
 }
-char * countPrompt = "count ";
+uint32_t File::position() {
+    fpos_t pos;
+    fsetpos (internalFile,&pos);
+    return (uint32_t)pos;
+}
+uint32_t File::size() {
+    if (!isSDcard)
+    {
+        return (size_t)0;
+    }
+    if (internalFile == nullptr) {
+        return (size_t)0;
+    }
+    errno = 0;
+    long lCurrent = ftell (internalFile);
+    checkError("File::available ftell 1");
+    errno = 0;
+    fseek (internalFile , 0 , SEEK_END);
+    checkError("File::available fseek 1");
+    errno = 0;
+    long lSize = ftell (internalFile);
+    checkError("File::available ftell 2");
+    errno = 0;
+    rewind (internalFile);
+    checkError("File::available rewind");
+    errno = 0;
+    fseek (internalFile , lCurrent , SEEK_SET);
+    checkError("File::available fseek 2");
+    return (uint32_t)lSize;
+}
 int File::read()
 {
     if (!isSDcard)
@@ -202,7 +231,7 @@ int File::read()
     {
         result = inputBuffer[0];
     } else {
-        displayError("File::read", strcat(countPrompt, (std::to_string(count)).c_str()));
+        displayError("File::read", strcat((char*)"count ", (std::to_string(count)).c_str()));
     }
     return result;
 };
@@ -432,7 +461,8 @@ size_t SoftwareSerial::printNumber(unsigned long n, uint8_t base)
 }
 
 void SoftwareSerial::begin(unsigned long) {};
-int SoftwareSerial::read() {
+int SoftwareSerial::read()
+{
     return input[inputPosition++];
 };
 int SoftwareSerial::available()
@@ -443,16 +473,9 @@ size_t SoftwareSerial::write(char c)
 {
     return print(c);
 };
-size_t SoftwareSerial::println() {
-    print("\r\n");
-    return (size_t)1;
-};
-size_t SoftwareSerial::println(const char* data_)
-{
-    size_t n = print(data_);
-    n += println();
-    return n;
-};
+
+
+//size_t SoftwareSerial::print(const char[] data_)
 size_t SoftwareSerial::print(const char* data_)
 {
     return write((char*)data_);
@@ -461,36 +484,88 @@ size_t SoftwareSerial::print(char c_)
 {
     output.push_back((byte)c_);
     return 1;
-};
-size_t SoftwareSerial::println(int num, int base)
+}
+size_t SoftwareSerial::print(unsigned char uc_, int base_)
 {
-    size_t n = print(num, base);
+    output.push_back((byte)uc_);
+    return 1;
+}
+size_t SoftwareSerial::print(int num_, int base_)
+{
+    return print((long) num_, base_);
+}
+size_t SoftwareSerial::print(unsigned int num_, int base_)
+{
+    return print((long) num_, base_);
+}
+size_t SoftwareSerial::print(long num_, int base_)
+{
+    if (base_ == 0) {
+        return 0;//write(num);
+    } else if (base_ == 10) {
+        if (num_ < 0) {
+            int t = print('-');
+            num_ = -num_;
+            return printNumber(num_, 10) + t;
+        }
+        return printNumber(num_, 10);
+    } else {
+        return printNumber(num_, base_);
+    }
+
+}
+size_t SoftwareSerial::print(unsigned long num_, int base_) {
+    return print((long)num_, base_);
+}
+//size_t SoftwareSerial::println(const char[] data_)
+size_t SoftwareSerial::println(const char* data_)
+{
+    size_t n = print(data_);
     n += println();
     return n;
 };
-size_t SoftwareSerial::print(int num, int base)
+size_t SoftwareSerial::println(char c_)
 {
-    return print((long) num, base);
+    size_t n = print(c_);
+    n += println();
+    return n;
 };
-size_t SoftwareSerial::print(long num, int base)
+size_t SoftwareSerial::println(unsigned char uc_, int base_)
 {
-    if (base == 0) {
-        return 0;//write(num);
-    } else if (base == 10) {
-        if (num < 0) {
-            int t = print('-');
-            num = -num;
-            return printNumber(num, 10) + t;
-        }
-        return printNumber(num, 10);
-    } else {
-        return printNumber(num, base);
-    }
+    size_t n = print(uc_, base_);
+    n += println();
+    return n;
 };
-size_t SoftwareSerial::println(unsigned int num, int base)
+size_t SoftwareSerial::println(int num_, int base_)
 {
-    return (size_t)0;
+    size_t n = print(num_, base_);
+    n += println();
+    return n;
 };
+size_t SoftwareSerial::println(unsigned int num_, int base_)
+{
+    size_t n = print(num_, base_);
+    n += println();
+    return n;
+};
+size_t SoftwareSerial::println(long num_, int base_)
+{
+    size_t n = print(num_, base_);
+    n += println();
+    return n;
+};
+size_t SoftwareSerial::println(unsigned long num_, int base_)
+{
+    size_t n = print(num_, base_);
+    n += println();
+    return n;
+};
+size_t SoftwareSerial::println(void)
+{
+    print("\n");
+    return (size_t)1;
+};
+
 void SoftwareSerial::setInput(std::vector<byte> input_)
 {
     input = input_;

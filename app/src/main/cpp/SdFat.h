@@ -60,6 +60,8 @@ public:
     void setFILE(FILE* file);
     bool seek(uint32_t pos);
     int available();
+    uint32_t position();
+    uint32_t size();
     int read();
     size_t write(uint8_t);
     void flush();
@@ -136,14 +138,28 @@ public:
     int read();
     int available();
     size_t write(char);
-    size_t println();
-    size_t println(const char*);
+
+//    size_t print(const char[]);
     size_t print(const char*);
     size_t print(char);
-    size_t println(int, int = DEC);
+    size_t print(unsigned char, int = DEC);
     size_t print(int, int = DEC);
+    size_t print(unsigned int, int = DEC);
     size_t print(long, int = DEC);
+    size_t print(unsigned long, int = DEC);
+//    size_t print(double, int = 2);
+
+//    size_t println(const char[]);
+    size_t println(const char*);
+    size_t println(char);
+    size_t println(unsigned char, int = DEC);
+    size_t println(int, int = DEC);
     size_t println(unsigned int, int = DEC);
+    size_t println(long, int = DEC);
+    size_t println(unsigned long, int = DEC);
+//    size_t println(double, int = 2);
+    size_t println(void);
+
     void setInput(std::vector<byte>);
     void clearInput();
     void clearOutput();

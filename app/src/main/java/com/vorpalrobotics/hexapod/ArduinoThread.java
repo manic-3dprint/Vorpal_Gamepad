@@ -5,6 +5,8 @@ import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * This is a Thread that handles the (simulated) bluetooth activity on the Gamepad
@@ -13,7 +15,7 @@ import java.io.IOException;
 public class ArduinoThread extends Thread {
     private static final int ARDUINO_THREAD_DELAY = 100; // arduino thread sleep milliseconds
     private static final int ARDUINO_COMMAND_DELAY = 2000; // arduino thread sleep milliseconds
-    public static final boolean DEBUG_LOOP = false; // Set to true to get debug messages in loop - a whole lot of debug output
+    public static final boolean DEBUG_LOOP = true; // Set to true to get debug messages in loop - a whole lot of debug output
     private static final String LOG_TAG = "DEBUG_ARDUINO"; // key for debug messages in Logcat
     private static final int CHECK_CONSECUTIVE_BLUETOOTH_ERRORS = 8; // number of consecutive bluetooth errors before disconnect bluetooth
     private ArduinoThreadCaller callingActivity; // interface of MainActivity
@@ -70,15 +72,24 @@ public class ArduinoThread extends Thread {
                     if (bluetoothInput.length > 0 && DEBUG_LOOP) {
                         Log.wtf(LOG_TAG, "bluetooth receive:" + new String(bluetoothInput));
                     }
-
+                    Calendar before = new GregorianCalendar();
                     byte[][] serialPlusBluetoothPlusIndicatorsOutput = arduinoLoop(serialInput, bluetoothInput);
+                    Calendar after = new GregorianCalendar();
                     byte[] serialOutput = serialPlusBluetoothPlusIndicatorsOutput[0];
                     byte[] bluetoothOutput = serialPlusBluetoothPlusIndicatorsOutput[1];
                     byte[] stateIndicators = serialPlusBluetoothPlusIndicatorsOutput[2];
                     byte[] errorOutput = serialPlusBluetoothPlusIndicatorsOutput[3];
-                    if (serialOutput.length > 0 && callingActivity.useScratchX())
+                    if (DEBUG_LOOP)
                     {
-                        scratchXServer.setSerialOutput(serialOutput);
+                        Log.wtf(LOG_TAG, "loop duration:" + (after.getTimeInMillis() - before.getTimeInMillis()) / 1000.00 + " seconds");
+                        //Runtime.getRuntime().gc();
+                        Log.wtf(LOG_TAG, "loop free memory:" + Runtime.getRuntime().freeMemory());
+                    }
+                    if (serialOutput.length > 0)
+                    {
+                        if (callingActivity.useScratchX()) {
+                            scratchXServer.setSerialOutput(serialOutput);
+                        }
                         if (DEBUG_LOOP)
                         {
                             Log.wtf(LOG_TAG, "loop serial output:" + new String(serialOutput));
