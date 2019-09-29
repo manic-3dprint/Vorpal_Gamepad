@@ -19,12 +19,12 @@ The app works the same as the Gamepad (trim/recording/playing/ScratchX are all i
 Get a Vorpal Hexapod Robot, buy it or assemble it. You will need the Robot, but not the Gamepad. Please support Vorpal Robotics by buying from their store:
 https://vorpal-robotics-store.myshopify.com/collections/hexapod-kits/products/vorpal-the-hexapod-opts
 
-The Robot has an HC-05 Bluetooth receiver. If you bought the kit, the Gamepad and Robot will be paired. You do not want the HC-05 in the Robot to be paired to the Gamepad. Recommended is to buy a separate HC-05 and replace the one in the Robot (that way you can put back the original if you want). The HC-05 needs to be 5V compatible. If you buy the HC-05 from Vorpal, it will be compatible. If you buy it somewhere else, check the specs for 5V compatibility (not 3.3V).
-
-You will need to pair your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
+The Robot has an HC-05 Bluetooth receiver. If you bought the kit from Vorpal Robotics, the Gamepad and Robot will be paired. You do not want the HC-05 in the Robot to be paired to the Gamepad. Recommended is to buy a separate HC-05 and replace the one in the Robot (that way you can put back the original if you want). The HC-05 needs to be 5V compatible. If you buy the HC-05 from Vorpal Robotics, it will be compatible. If you buy it somewhere else, check the specs for 5V compatibility (not 3.3V). Note - one user said that he used an HC-06 successfully.
 
 You will need to make sure that the connection speed of the HC-05 in the robot is 38400 - this is the speed that the app uses.
-If you buy the kit or just the HC-05 from Vorpal Robotics, the HC-05 speed is set to 38400. But if you buy the HC-05 from somewhere else, you will need to find out the speed and change it if it is not 38400 (many HC-05 default to 9600). There are several on line tutorials on how to change the speed of the HC-05. Note - one user said that he used an HC-06 successfully.
+If you buy the kit or just the HC-05 from Vorpal Robotics, the HC-05 speed is set to 38400. But if you buy the HC-05 from somewhere else, you will need to change the speed to 38400 (many HC-05 default to 9600). There are several on line tutorials on how to change the speed of the HC-05.
+
+You will need to pair your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
 
 ### Prerequisites
 
@@ -40,7 +40,6 @@ On your Android device:
 - The message at the bottom will say "No Paired Device".
 - Click on the Settings gear icon on the right of the page, find Bluetooth Devices, click on it.
 - There will be a list of all paired bluetooth devices, select the bluetooth for the Robot.
-- On Bluetooth Speed, you can click on it to enter the speed that was set on the HC-05 in the Robot.
 - You can modify the other Preferences (recommended to leave Connect Automatically to on).
 - Return to the main screen.
 - The message should say No Connection and the Bluetooth icon will be black.
@@ -56,7 +55,7 @@ Now, you can use the app just like the Gamepad.
 The app works just like the real Vorpal Gamepad, see the Guide at
 http://vorpalrobotics.com/wiki/index.php/Vorpal_The_Hexapod_Gamepad_User_Guide
 
-note - if the app and the Robot get unsynced, try turning off the Robot, counting to 10, and turning the Robot on again. (reconnect bluetooth if not set to automatic).
+note - if the app and the Robot get unsynced, (leave app turned on) try turning off the Robot, counting to 10, and turning the Robot on again.
 
 The right hand side has additional options:
 - on/off button - this works like the power button on the Gamepad.
@@ -86,9 +85,10 @@ You will need to host web pages that the app can access by wifi. To host web pag
  You should now be able to control the Robot using ScratchX. This will work like using ScratchX with the real Gamepad.
 
 ## Troubleshooting
-- use connect bluetooth automatically
-- start the app before starting the robot
+- use "Connect Automatically" in preferences
+- start the app and turn it on before starting the robot
 - make sure the robot dial is set to RC
+- make sure the app is connected to the correct Bluetooth Device
 - if it cannot connect, make sure the speed of the HC-05 in the robot is set to 38400
 
 ## Building
