@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
                 }
             }
         });
-        for (int row_loop = 0;row_loop < 4; row_loop++)
+        for (int row_loop = 0; row_loop < 4; row_loop++)
         {
             for (int column_loop = 0;column_loop < 4; column_loop++)
             {
@@ -212,17 +212,6 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
         setSDcard(isSDcard);
         isSound = prefs.getBoolean("sound", true);
         bluetoothAddress = prefs.getString("bluetoothAddress", "");
-        long bluetoothSpeed;
-        String bluetoothSpeedString = prefs.getString("bluetoothSpeed", "9600");
-        try
-        {
-            bluetoothSpeed = Integer.parseInt(bluetoothSpeedString);
-        } catch (NumberFormatException x)
-        {
-            Log.wtf(LOG_TAG, "invalid bluetoothSpeed " + bluetoothSpeedString);
-            bluetoothSpeed = 9600;
-        }
-        setBluetoothSpeed(bluetoothSpeed);
         isConnectBluetoothAutomatically = prefs.getBoolean("connectBluetoothAutomatically", true);
         isConnectScratchX = prefs.getBoolean("connectScratchX", false);
         setNormalMessage();
@@ -789,6 +778,4 @@ public class MainActivity extends AppCompatActivity implements ConnectBTCaller, 
     public native void setInternalFileDir(String internalFileDir);
 
     public native void setSDcard(boolean isSDcard);
-
-    public native void setBluetoothSpeed(long bluetoothSpeed);
 }

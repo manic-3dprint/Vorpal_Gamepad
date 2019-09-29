@@ -20,13 +20,5 @@
             android:summary="@string/preferences_connect_bluetooth_automatically_summary"
             android:defaultValue="true"
             />
-        <EditTextPreference
-            android:key="bluetoothSpeed"
-            android:title="@string/preferences_bluetooth_speed"
-            android:summary="@string/preferences_bluetooth_speed_summary"
-            android:inputType="numberDecimal"
-            android:digits="0123456789"
-            android:defaultValue="9600"
-            />
     </PreferenceCategory>
 </PreferenceScreen>

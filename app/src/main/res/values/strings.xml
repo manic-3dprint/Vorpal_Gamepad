@@ -144,9 +144,7 @@
     <string name="preferences_sound_summary">Click noise for key press</string>
     <string name="preferences_connect_bluetooth_automatically">Connect Automatically</string>
     <string name="preferences_connect_bluetooth_automatically_summary">Connect to Bluetooth automatically</string>
-    <string name="preferences_bluetooth_speed">Bluetooth Speed</string>
-    <string name="preferences_bluetooth_speed_summary">Speed of the Bluetooth connection (set in HC-05)</string>
-    <string name="preferences_bluetooth_device">Bluetooth Devices</string>
+    <string name="preferences_bluetooth_device">Bluetooth Devices (device must be set to 38400)</string>
     <string name="preferences_bluetooth_device_summary">Select the Bluetooth Device for the Vorpal robot (click here to display list of devices)</string>
     <string name="preferences_bluetooth_paired_devices_help">note - The Bluetooth Device must be paired with this Android device, see:</string>
     <string name="preferences_bluetooth_paired_devices_URL">https://support.google.com/android/answer/9075925?hl=en</string>

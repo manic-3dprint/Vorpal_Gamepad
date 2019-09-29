@@ -6,8 +6,8 @@ android {
         applicationId "com.vorpalrobotics.hexapod"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 4
-        versionName "Beta 0.93"
+        versionCode 5
+        versionName "Beta 0.94"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

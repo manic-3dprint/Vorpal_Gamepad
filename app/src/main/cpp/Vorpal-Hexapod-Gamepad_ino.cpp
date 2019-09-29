@@ -1033,7 +1033,7 @@ void setup() {
     }
     // after this point you can't flash the led on pin 13 because we're using it for SD card
 
-    BlueTooth.begin(bluetoothSpeed); ////////////// modified from 38400
+    BlueTooth.begin(38400);
 
     Serial.println(Version);
 

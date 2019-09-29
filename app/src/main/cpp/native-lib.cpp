@@ -4,6 +4,7 @@
 #include "Vorpal-Hexapod-Gamepad_ino.h"
 #include "SdFat.h"
 #include <iterator>
+
 extern SoftwareSerial BlueTooth;
 extern byte TrimMode;
 extern int SRecState;
@@ -12,7 +13,6 @@ extern int GRecState;
 char internalFileDir[BUFFER_SIZE];
 char errorMessage[BUFFER_SIZE];
 SoftwareSerial Serial = SoftwareSerial();
-long bluetoothSpeed;
 bool isSDcard;
 
 // https://stackoverflow.com/questions/11558899/passing-a-string-to-c-code-in-android-ndk
@@ -40,6 +40,7 @@ std::vector<byte> jByteArrayToStdVector(JNIEnv *env, jbyteArray arr)
     }
     return ret;
 }
+
 jbyteArray stdVectorToJByteArray(JNIEnv *env, std::vector<byte> value)
 {
     jsize arraySize = (jsize)value.size();
@@ -51,6 +52,7 @@ jbyteArray stdVectorToJByteArray(JNIEnv *env, std::vector<byte> value)
     env->SetByteArrayRegion (ret, 0, arraySize, jniValue);
     return ret;
 }
+
 jbyteArray charArrayToJByteArray(JNIEnv *env, char* buffer)
 {
     jsize arraySize = strlen(buffer);
@@ -60,6 +62,7 @@ jbyteArray charArrayToJByteArray(JNIEnv *env, char* buffer)
     env->SetByteArrayRegion (ret, 0, arraySize, jniValue);
     return ret;
 }
+
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_com_vorpalrobotics_hexapod_MainActivity_arduinoSetup(JNIEnv *env, jobject) {
     setup();
@@ -120,10 +123,4 @@ extern "C" JNIEXPORT void JNICALL
 Java_com_vorpalrobotics_hexapod_MainActivity_setSDcard(JNIEnv *env, jobject, jboolean isSDcard_)
 {
     isSDcard = isSDcard_;
-}
-
-extern "C" JNIEXPORT void JNICALL
-Java_com_vorpalrobotics_hexapod_MainActivity_setBluetoothSpeed(JNIEnv *env, jobject, jlong bluetoothSpeed_)
-{
-    bluetoothSpeed = bluetoothSpeed_;
 }

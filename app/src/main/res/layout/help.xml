@@ -360,34 +360,8 @@
             android:text="\n"
             />
         <TextView
-            android:id="@+id/help_preferences_bluetooth_speed"
-            android:layout_below="@id/help_preferences_connect_bluetooth_on_startup_detail_crlf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/colorHelpText"
-            android:text="@string/preferences_bluetooth_speed"
-            />
-        <TextView
-            android:id="@+id/help_preferences_bluetooth_speed_detail"
-            android:layout_below="@id/help_preferences_bluetooth_speed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorHelpText"
-            android:text="@string/preferences_bluetooth_speed_summary"
-            />
-        <TextView
-            android:id="@+id/help_preferences_bluetooth_speed_crlf"
-            android:layout_below="@id/help_preferences_bluetooth_speed_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/colorHelpText"
-            android:text="\n"
-            />
-        <TextView
             android:id="@+id/help_preferences_bluetooth"
-            android:layout_below="@id/help_preferences_bluetooth_speed_crlf"
+            android:layout_below="@id/help_preferences_connect_bluetooth_on_startup_detail_crlf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
