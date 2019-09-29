@@ -23,7 +23,8 @@ The Robot has an HC-05 Bluetooth receiver. If you bought the kit, the Gamepad an
 
 You will need to pair your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
 
-You will need the connection speed of the HC-05, the default speed is 9600. The Vorpal paired HC-05 speed is 38400. There are several on line tutorials on how to change the speed of the HC-05.
+You will need to make sure that the connection speed of the HC-05 in the robot is 38400 - this is the speed that the app uses.
+If you buy the kit or just the HC-05 from Vorpal Robotics, the HC-05 speed is set to 38400. But if you buy the HC-05 from somewhere else, you will need to find out the speed and change it if it is not 38400 (many HC-05 default to 9600). There are several on line tutorials on how to change the speed of the HC-05. Note - one user said that he used an HC-06 successfully.
 
 ### Prerequisites
 
@@ -84,6 +85,12 @@ You will need to host web pages that the app can access by wifi. To host web pag
  
  You should now be able to control the Robot using ScratchX. This will work like using ScratchX with the real Gamepad.
 
+## Troubleshooting
+- use connect bluetooth automatically
+- start the app before starting the robot
+- make sure the robot dial is set to RC
+- if it cannot connect, make sure the speed of the HC-05 in the robot is set to 38400
+
 ## Building
 
 This app is built with Android Studio using java and cpp for the Arduino code.
@@ -93,6 +100,6 @@ This app is built with Android Studio using java and cpp for the Arduino code.
 This app uses:
 - the Vorpal-Hexapod-Gamepad.ino file as a cpp file.
 - file io directly from the cpp code.
-- bluetooth and ScratchX serial streaming io are handled using java code.
+- Bluetooth and ScratchX serial streaming io are handled using java code.
 - nanohttpd web server.
 - Vorpal-Gamepad-App-Scratch.js ScratchX app.
