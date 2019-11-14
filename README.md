@@ -90,6 +90,8 @@ You will need to host web pages that the app can access by wifi. To host web pag
 - make sure the robot dial is set to RC
 - make sure the app is connected to the correct Bluetooth Device
 - if it cannot connect, make sure the speed of the HC-05 in the robot is set to 38400
+- if you press a mode button too quickly, it may not register. You should press until you hear a beep.
+- Fight mode F3 and F4 do not work correctly, too slow
 
 ## Building
 
