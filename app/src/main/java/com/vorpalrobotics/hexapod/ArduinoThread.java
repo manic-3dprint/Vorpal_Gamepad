@@ -1,7 +1,5 @@
 package com.vorpalrobotics.hexapod;
 
-import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
@@ -14,13 +12,9 @@ import java.util.GregorianCalendar;
  */
 public class ArduinoThread extends Thread {
     private static final int ARDUINO_THREAD_DELAY = 100; // arduino thread sleep milliseconds
-    private static final int ARDUINO_COMMAND_DELAY = 2000; // arduino thread sleep milliseconds
-    public static final boolean DEBUG_LOOP = false; // Set to true to get debug messages in loop - a whole lot of debug output
     private static final String LOG_TAG = "DEBUG_ARDUINO"; // key for debug messages in Logcat
     private static final int CHECK_CONSECUTIVE_BLUETOOTH_ERRORS = 8; // number of consecutive bluetooth errors before disconnect bluetooth
-    private ArduinoThreadCaller callingActivity; // interface of MainActivity
-    private static final byte[] BLUETOOTH_GOOD = {0}; // bluetooth no error
-    private static final byte[] BLUETOOTH_ERROR = {1}; // bluetooth error
+    private AppState appState; // AppState
     private int consecutiveBluetoothErrors = 0; // number of consecutive bluetooth errors
     private ScratchXServer scratchXServer; // http servder to talk to ScratchX web page
     private boolean scratchXServerActive = false; // if the http server is active
@@ -28,12 +22,12 @@ public class ArduinoThread extends Thread {
 
     /**
      * Constructor
-     * @param callingActivity_ the Activity that started this Thread - implements interface ArduinoThreadCaller
+     * @param appState_ the AppState
      */
-    ArduinoThread(ArduinoThreadCaller callingActivity_)
+    ArduinoThread(AppState appState_)
     {
         super();
-        callingActivity = callingActivity_;
+        appState = appState_;
         scratchXServer = new NanoHttpdScratchXServer();
         scratchXServerActive = scratchXServer.startMe();
     }
@@ -45,31 +39,31 @@ public class ArduinoThread extends Thread {
     @Override
     public void run()
     {
-        if (MainActivity.DEBUG)
+        if (Utils.DEBUG)
         {
             Log.wtf(LOG_TAG, "Arduino run");
         }
         while (!Thread.currentThread().isInterrupted())
         {
             try {
-                if (DEBUG_LOOP)
+                if (Utils.DEBUG_LOOP)
                 {
                     Log.wtf(LOG_TAG, "Arduino while loop");
                 }
-                if (callingActivity.isPowerOn() && callingActivity.isBtConnected() && !callingActivity.isPaused())
+                if (appState.isPowerOn() && appState.getBluetoothState() == AppState.BluetoothState.CONNECTED && !appState.isPaused())
                 {
-                    byte[] serialInput = callingActivity.useScratchX() ? scratchXServer.getSerialInput() : ScratchXServer.EMPTY_SERIAL_INPUT;
-                    if (DEBUG_LOOP && serialInput.length > 0)
+                    byte[] serialInput = appState.isConnectScratchX() ? scratchXServer.getSerialInput() : ScratchXServer.EMPTY_SERIAL_INPUT;
+                    if (Utils.DEBUG_LOOP && serialInput.length > 0)
                     {
                         Log.wtf(LOG_TAG, "loop serial input:" + new String(serialInput));
                     }
                     boolean newHasScratchXCommand = serialInput.length > 0;
                     if (newHasScratchXCommand || hasScratchXCommand) {
-                        setScratchXCommand(newHasScratchXCommand);
+                        appState.setScratchXCommand(newHasScratchXCommand);
                     }
                     hasScratchXCommand = newHasScratchXCommand;
                     byte[] bluetoothInput = receiveBluetooth();
-                    if (bluetoothInput.length > 0 && DEBUG_LOOP) {
+                    if (bluetoothInput.length > 0 && Utils.DEBUG_LOOP) {
                         Log.wtf(LOG_TAG, "bluetooth receive:" + new String(bluetoothInput));
                     }
                     Calendar before = new GregorianCalendar();
@@ -79,7 +73,7 @@ public class ArduinoThread extends Thread {
                     byte[] bluetoothOutput = serialPlusBluetoothPlusIndicatorsOutput[1];
                     byte[] stateIndicators = serialPlusBluetoothPlusIndicatorsOutput[2];
                     byte[] errorOutput = serialPlusBluetoothPlusIndicatorsOutput[3];
-                    if (DEBUG_LOOP)
+                    if (Utils.DEBUG_LOOP)
                     {
                         Log.wtf(LOG_TAG, "loop duration:" + (after.getTimeInMillis() - before.getTimeInMillis()) / 1000.00 + " seconds");
                         //Runtime.getRuntime().gc();
@@ -87,23 +81,25 @@ public class ArduinoThread extends Thread {
                     }
                     if (serialOutput.length > 0)
                     {
-                        if (callingActivity.useScratchX()) {
+                        if (appState.isConnectScratchX()) {
                             scratchXServer.setSerialOutput(serialOutput);
                         }
-                        if (DEBUG_LOOP)
+                        if (Utils.DEBUG_LOOP)
                         {
                             Log.wtf(LOG_TAG, "loop serial output:" + new String(serialOutput));
                         }
                     }
                     if (bluetoothOutput.length > 0) {
                         sendBluetooth(bluetoothOutput);
-                        if (DEBUG_LOOP)
+                        if (Utils.DEBUG_LOOP)
                         {
                             Log.wtf(LOG_TAG, "loop bluetooth send:" + new String(bluetoothOutput));
                         }
                     }
-                    setStatus(MainActivity.MESSAGE_ICON_STATE, stateIndicators);
-                    if (errorOutput.length > 0 && DEBUG_LOOP)
+                    appState.setScratchXing(stateIndicators[0] == 1);
+                    appState.setScratchState(stateIndicators[1]);
+                    appState.setGamepadState(stateIndicators[2]);
+                    if (errorOutput.length > 0 && Utils.DEBUG_LOOP)
                     {
                         Log.wtf(LOG_TAG, "loop error:" + new String(errorOutput));
                     }
@@ -113,7 +109,7 @@ public class ArduinoThread extends Thread {
             } catch (Exception ex)
             {
                 ///// Thread.currentThread().interrupt();
-                if (MainActivity.DEBUG)
+                if (Utils.DEBUG)
                 {
                     Log.wtf(LOG_TAG, "Arduino Thread Exception " + ex.getMessage());
                 }
@@ -126,7 +122,7 @@ public class ArduinoThread extends Thread {
      */
     private void bluetoothGood()
     {
-        setStatus(MainActivity.MESSAGE_ICON_BLUETOOTH, BLUETOOTH_GOOD);
+        appState.setBluetoothState(AppState.BluetoothState.CONNECTED);
         consecutiveBluetoothErrors = 0;
     }
 
@@ -136,11 +132,10 @@ public class ArduinoThread extends Thread {
     private void bluetoothError()
     {
         consecutiveBluetoothErrors++;
+        appState.setBluetoothState(AppState.BluetoothState.ERROR);
         if (consecutiveBluetoothErrors > CHECK_CONSECUTIVE_BLUETOOTH_ERRORS) {
-            callingActivityDisconnectBluetooth();
+            appState.disconnectBluetooth();
             consecutiveBluetoothErrors = 0;
-        } else {
-            setStatus(MainActivity.MESSAGE_ICON_BLUETOOTH, BLUETOOTH_ERROR);
         }
     }
 
@@ -154,9 +149,9 @@ public class ArduinoThread extends Thread {
         byte[] buffer = new byte[1024];
         try
         {
-            if (callingActivity.getBluetoothSocket().getInputStream().available() > 0)
+            if (appState.getBluetoothSocket().getInputStream().available() > 0)
             {
-                int length = callingActivity.getBluetoothSocket().getInputStream().read(buffer);
+                int length = appState.getBluetoothSocket().getInputStream().read(buffer);
                 bluetoothGood();
                 data = new byte[length];
                 System.arraycopy(buffer, 0, data, 0, length);
@@ -164,8 +159,7 @@ public class ArduinoThread extends Thread {
         }
         catch (IOException e)
         {
-//            setMessage(R.string.message_communication_error, R.color.colorMessageError);
-            if (MainActivity.DEBUG)
+            if (Utils.DEBUG)
             {
                 Log.wtf(LOG_TAG, "bluetooth receive error:" + e.getMessage());
             }
@@ -182,75 +176,18 @@ public class ArduinoThread extends Thread {
     {
         try
         {
-            callingActivity.getBluetoothSocket().getOutputStream().write(data);
+            appState.getBluetoothSocket().getOutputStream().write(data);
             bluetoothGood();
         }
         catch (IOException e) {
-//            setMessage(R.string.message_communication_error, R.color.colorMessageError);
-            if (MainActivity.DEBUG) {
+            if (Utils.DEBUG) {
                 Log.wtf(LOG_TAG, "bluetooth send error:" + e.getMessage());
             }
             bluetoothError();
         }
     }
 
-    // https://www.intertech.com/Blog/android-non-ui-to-ui-thread-communications-part-3-of-5/
-    /**
-     * set an icon on the Main view
-     * @param icon which icon
-     * @param status for state icon, the state indicators
-     */
-    private void setStatus(byte icon, byte[] status) {
-        if (DEBUG_LOOP) {
-            Log.wtf(LOG_TAG, "setStatus from the Arduino Thread");
-        }
-        Bundle msgBundle = new Bundle();
-        msgBundle.putString("type", "icon");
-        msgBundle.putByte("icon", icon);
-        msgBundle.putByteArray("status", status);
-        Message msg = new Message();
-        msg.setData(msgBundle);
-        callingActivity.getHandlerExtension().sendMessage(msg);
-    }
-
-    /**
-     * tell the calling Activity that there is a scratchX command or not
-     * @param hasScratchXCommand if there is a scratchX command
-     */
-    private void setScratchXCommand(boolean hasScratchXCommand) {
-        Bundle msgBundle = new Bundle();
-        msgBundle.putString("type", "scratchX");
-        msgBundle.putBoolean("hasScratchXCommand", hasScratchXCommand);
-        Message msg = new Message();
-        msg.setData(msgBundle);
-        callingActivity.getHandlerExtension().sendMessage(msg);
-    }
-
-    /**
-     * disconnect the bluetooth connection to the Robot
-     */
-    private void callingActivityDisconnectBluetooth() {
-        if (DEBUG_LOOP) {
-            Log.wtf(LOG_TAG, "callingActivityDisconnectBluetooth from the Arduino Thread");
-        }
-        Bundle msgBundle = new Bundle();
-        msgBundle.putString("type", "command");
-        msgBundle.putString("command", "disconnectBluetooth");
-        Message msg = new Message();
-        msg.setData(msgBundle);
-        callingActivity.getHandlerExtension().sendMessage(msg);
-        try {
-            Thread.sleep(ARDUINO_COMMAND_DELAY);
-        } catch (InterruptedException ex)
-        {
-            if (MainActivity.DEBUG) {
-                Log.wtf(LOG_TAG, "callingActivityDisconnectBluetooth error:" + ex.getMessage());
-            }
-        }
-    }
-
     /////////////// C++ native routines, implemented in native-lib.cpp /////////////////
 
     public native byte[][] arduinoLoop(byte[] serialInput, byte[] bluetoothInput);
-
 }

@@ -15,23 +15,21 @@ public class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
     private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String LOG_TAG = "DEBUG_CONNECT_BT"; // key for debug messages in Logcat
     private boolean ConnectSuccess = true; // if it's here, it's almost connected
-    private BluetoothSocket btSocket = null; // the communications socket for the bluetooth connection
+    private BluetoothSocket bluetoothSocket = null; // the communications socket for the bluetooth connection
     private String bluetoothAddress; // bluetooth address of the Vorpal Robot
-    private ConnectBTCaller callingActivity; // interface of MainActivity
+    private AppState appState; // AppState
 
-    ConnectBT(String bluetoothAddress_, ConnectBTCaller callingActivity_)
+    ConnectBT(AppState appState_)
     {
         super();
-        bluetoothAddress = bluetoothAddress_;
-        callingActivity = callingActivity_;
+        appState = appState_;
+        bluetoothAddress = appState.getBluetoothAddress();
     }
 
     @Override
     protected void onPreExecute()
     {
-        if (!callingActivity.isConnectBluetoothAutomatically()) {
-            callingActivity.setMessage(R.string.message_connecting, R.color.colorMessage);
-        }
+        appState.setBluetoothState(AppState.BluetoothState.CONNECTING);
     }
 
     @Override
@@ -43,43 +41,42 @@ public class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
             if (myBluetooth == null)
             {
                 ConnectSuccess = false;//if the try failed, you can check the exception here
-                if (MainActivity.DEBUG)
+                if (Utils.DEBUG)
                 {
+                    appState.setBluetoothState(AppState.BluetoothState.ERROR);
                     Log.wtf(LOG_TAG, "ConnectBT BluetoothAdapter is null");
                 }
             } else {
                 BluetoothDevice myDevice = myBluetooth.getRemoteDevice(bluetoothAddress);//connects to the device's bluetoothAddress and checks if it's available
-                btSocket = myDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
+                bluetoothSocket = myDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
                 myBluetooth.cancelDiscovery();
-                btSocket.connect();//start connection
+                bluetoothSocket.connect();//start connection
             }
         }
         catch (Exception e)
         {
             ConnectSuccess = false;//if the try failed, you can check the exception here
-            if (ArduinoThread.DEBUG_LOOP)
+            if (Utils.DEBUG_LOOP)
             {
                 Log.wtf(LOG_TAG, "ConnectBT Exception " + e.getMessage());
             }
         }
         return null;
     }
+
     @Override
     protected void onPostExecute(Void result) //after the doInBackground, it checks if everything went fine
     {
         super.onPostExecute(result);
 
-        if (!ConnectSuccess)
+        if (ConnectSuccess)
         {
-            if (!callingActivity.isConnectBluetoothAutomatically())
-            {
-                callingActivity.setMessage(R.string.message_connection_failed, R.color.colorMessageError);
-            }
+            appState.setBluetoothSocket(bluetoothSocket);
+            appState.setBluetoothState(AppState.BluetoothState.CONNECTED);
         }
         else
         {
-            callingActivity.setBluetoothSocket(btSocket);
+            appState.setBluetoothState(AppState.BluetoothState.ERROR);
         }
-        callingActivity.setNotConnecting();
     }
 }

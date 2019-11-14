@@ -7,6 +7,8 @@ import java.util.*;
 //import org.apache.http.conn.util.InetAddressUtils;
 
 public class Utils {
+    static final boolean DEBUG = false; // Set to true to get more debug messages
+    static final boolean DEBUG_LOOP = false; // Set to true to get debug messages in loop - a whole lot of debug output
 
     /**
      * Convert byte array to hex string

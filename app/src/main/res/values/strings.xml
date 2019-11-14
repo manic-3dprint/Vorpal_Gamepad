@@ -34,12 +34,11 @@
 
     <string name="message_wait">Please wait</string>
     <string name="message_off">Off</string>
+    <string name="message_no_bluetooth">Bluetooth Not Available - app stopped</string>
     <string name="message_no_paired_device">No Paired Device</string>
     <string name="message_no_connection">No Connection</string>
-    <string name="message_no_bluetooth">Bluetooth Not Available - app stopped</string>
     <string name="message_connecting">Connecting ...</string>
-    <string name="message_connection_failed">Connection Failed</string>
-    <string name="message_communication_error">Communication error</string>
+    <string name="message_bluetooth_error">Bluetooth Error</string>
     <string name="message_scratchx_control">ScratchX control</string>
 
     <string name="message_action_W1s">Walk Low step</string>

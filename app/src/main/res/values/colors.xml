@@ -17,7 +17,9 @@
     <color name="colorMessageError">#FF0000</color>
     <color name="colorMessageScratch">#00FF00</color>
     <color name="colorMessage">#000000</color>
+    <color name="colorBluetoothUnavailable">#7F7F7F</color>
     <color name="colorBluetoothDisconnected">#000000</color>
+    <color name="colorBluetoothConnecting">#FFFF00</color>
     <color name="colorBluetoothConnected">#0000FF</color>
     <color name="colorBluetoothError">#FF0000</color>
     <color name="colorHelpText">#000000</color>

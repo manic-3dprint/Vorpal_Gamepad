@@ -41,13 +41,12 @@ public class HelpActivity extends AppCompatActivity
         }
         catch (NameNotFoundException x)
 		{
-			if (MainActivity.DEBUG) {
+			if (Utils.DEBUG) {
 				Log.wtf(LOG_TAG, "HelpActivity Exception " + x.getMessage());
 			}
         }
 	}
 
-	@Override
 	/**
 	 * (see super)
 	 * @param item The menu item that was selected.
@@ -55,6 +54,7 @@ public class HelpActivity extends AppCompatActivity
 	 * @return boolean Return false to allow normal menu processing to
      *         proceed, true to consume it here.
 	 */
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == android.R.id.home) {

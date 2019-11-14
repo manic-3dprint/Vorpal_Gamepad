@@ -35,7 +35,6 @@ public class PreferencesActivity extends AppCompatActivity
         }
     }
 
-    @Override
     /**
      * (see super)
      * @param item The menu item that was selected.
@@ -43,6 +42,7 @@ public class PreferencesActivity extends AppCompatActivity
      * @return boolean Return false to allow normal menu processing to
      *         proceed, true to consume it here.
      */
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {

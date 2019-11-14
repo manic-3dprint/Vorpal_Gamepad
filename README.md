@@ -74,7 +74,7 @@ You will need to host web pages that the app can access by wifi. To host web pag
 
 - copy the file Vorpal-Gamepad-App-Scratch.js into the root folder of your web host.
 - make sure wifi is turned on on your Android device.
-- run the Vorpal_Gamepad app.
+- run the Vorpal Gamepad app.
 - click on the Settings gear and find the ScratchX section.
 - copy the ip address in parenthesis - four numbers separated by periods.
 - exit the settings page on the app.

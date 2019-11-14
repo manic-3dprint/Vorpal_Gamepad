@@ -25,7 +25,7 @@ public class NanoHttpdScratchXServer extends NanoHTTPD implements ScratchXServer
     /**
      * Constructor
      */
-    public NanoHttpdScratchXServer() {
+    NanoHttpdScratchXServer() {
         super(HTTP_SERVER_PORT);
     }
 
@@ -88,7 +88,7 @@ public class NanoHttpdScratchXServer extends NanoHTTPD implements ScratchXServer
     @Override
     public byte[] getSerialInput()
     {
-        if (ArduinoThread.DEBUG_LOOP)
+        if (Utils.DEBUG_LOOP)
         {
             Log.wtf(LOG_TAG, "getSerialInput serialInput= " + new String(serialInput) + ", " + serialInput.length + " ");
         }
