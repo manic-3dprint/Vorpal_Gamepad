@@ -24,7 +24,7 @@ The Robot has an HC-05 Bluetooth receiver. If you bought the kit from Vorpal Rob
 You will need to make sure that the connection speed of the HC-05 in the robot is 38400 - this is the speed that the app uses.
 If you buy the kit or just the HC-05 from Vorpal Robotics, the HC-05 speed is set to 38400. But if you buy the HC-05 from somewhere else, you will need to change the speed to 38400 (many HC-05 default to 9600). There are several on-line tutorials on how to change the speed of the HC-05.
 
-You will need to pair your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
+You will need to pair (bluetooth) your Android device with the Robot, turn on the Robot, and follow: https://support.google.com/android/answer/9075925?hl=en (do not connect)
 
 ### Prerequisites
 
