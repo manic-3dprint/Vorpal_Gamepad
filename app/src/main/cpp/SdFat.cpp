@@ -9,9 +9,14 @@
 #include <string>
 #include <fstream>
 extern bool isSDcard;
-extern byte TrimMode;
-extern int SRecState;
-extern int GRecState;
+//extern byte TrimMode;
+//extern int SRecState;
+//extern int GRecState;
+extern byte& TrimMode__V2;
+extern byte& TrimMode__V3;
+//extern int SRecState;
+extern int& GRecState__V2;
+extern int& GRecState__V3;
 
 // pins
 #define NO_VALUE (-1)
@@ -36,9 +41,10 @@ void gamepadPowerOff() {
     currentDPad = NO_ANALOG_VALUE;
     clickedRow = NO_VALUE;
     clickedColumn = NO_VALUE;
-    TrimMode = 0;
-    SRecState = 0;
-    GRecState = 0;
+    TrimMode__V2 = 0;
+    TrimMode__V3 = 0;
+    GRecState__V2 = 0;
+    GRecState__V3 = 0;
 }
 
 // set up state for the arduino pin read/write to simlulate

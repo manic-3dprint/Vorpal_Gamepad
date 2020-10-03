@@ -14,6 +14,14 @@
             android:summary="@string/preferences_sound_summary"
             android:defaultValue="true"
             />
+        <ListPreference
+            android:key="vorpalVersion"
+            android:title="@string/preferences_vorpal_version"
+            android:summary="@string/preferences_vorpal_version_summary"
+            android:entries="@array/vorpal_version_entries"
+            android:entryValues="@array/vorpal_version_values"
+            android:defaultValue="3"
+            />
         <CheckBoxPreference
             android:key="connectBluetoothAutomatically"
             android:title="@string/preferences_connect_bluetooth_automatically"

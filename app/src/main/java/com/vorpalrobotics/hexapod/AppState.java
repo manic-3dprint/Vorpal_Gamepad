@@ -39,15 +39,12 @@ class AppState {
     // note - sd card prefeence not saved here
     private boolean isPowerOn_ = false; // indicates whether the Gamepad power is on
     private boolean isPaused_ = false; // if the user is using another app on this Android device
-    private boolean isConnectScratchX_ = false; // user preference to connect to scratchx
     private boolean isSound_ = true; // if the user selected the sound preference
     private boolean isConnectBluetoothAutomatically_ = true; // user preference to automatically connect to the Robot by bluetooth
     private String bluetoothAddress_ = ""; // bluetooth address of the connected Robot
     private BluetoothSocket bluetoothSocket_ = null; // the Bluetooth socket of the bluetooth connection
-    private boolean isScratchXCommand_; // if there is a ScratchX command
     private BluetoothState bluetoothState_ = BluetoothState.UNAVAILABLE;
-    private boolean isScratchXing_;
-    private byte scratchState_;
+    private byte trimState_;
     private byte gamepadState_;
 
     /**
@@ -84,24 +81,6 @@ class AppState {
     void setPaused(boolean newIsPaused_)
     {
         isPaused_ = newIsPaused_;
-    }
-
-    /**
-     * indicates that the user has selected the use ScratchX preference
-     * @return true if the user wants to use ScratchX, false otherwise
-     */
-    boolean isConnectScratchX()
-    {
-        return isConnectScratchX_;
-    }
-
-    /**
-     * save the paused state
-     * @param newIsConnectScratchX_ the paused state
-     */
-    void setConnectScratchX(boolean newIsConnectScratchX_)
-    {
-        isConnectScratchX_ = newIsConnectScratchX_;
     }
 
     /**
@@ -207,38 +186,12 @@ class AppState {
         this.bluetoothState_ = bluetoothState__;
     }
 
-    /**
-     * indicates if there is a ScratchX command
-     * @return if there is a ScratchX command
-     */
-    boolean isScratchXCommand()
-    {
-        return isScratchXCommand_;
+    byte getTrimState() {
+        return trimState_;
     }
 
-    /**
-     * set whether there is a scratchX command
-     * @param newIsScratchXCommand_ whether there is a scratchX command
-     */
-    void setScratchXCommand(boolean newIsScratchXCommand_)
-    {
-        this.isScratchXCommand_ = newIsScratchXCommand_;
-    }
-
-    boolean isScratchXing() {
-        return isScratchXing_;
-    }
-
-    void setScratchXing(boolean scratchXing__) {
-        isScratchXing_ = scratchXing__;
-    }
-
-    byte getScratchState() {
-        return scratchState_;
-    }
-
-    void setScratchState(byte scratchState__) {
-        this.scratchState_ = scratchState__;
+    void setTrimState(byte trimState__) {
+        this.trimState_ = trimState__;
     }
 
     byte getGamepadState() {

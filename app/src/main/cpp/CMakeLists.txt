@@ -17,7 +17,7 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-lib.cpp Vorpal-Hexapod-Gamepad_ino.cpp SdFat.cpp SoftwareSerial.h)
+        native-lib.cpp Vorpal-Hexapod-Gamepad__v2_ino.cpp Vorpal-Hexapod-Gamepad__v3_ino.cpp SdFat.cpp SoftwareSerial.h)
 # native-lib.cpp,Vorpal-Hexapod-Gamepad_ino.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a

@@ -16,9 +16,7 @@ public class ArduinoThread extends Thread {
     private static final int CHECK_CONSECUTIVE_BLUETOOTH_ERRORS = 8; // number of consecutive bluetooth errors before disconnect bluetooth
     private AppState appState; // AppState
     private int consecutiveBluetoothErrors = 0; // number of consecutive bluetooth errors
-    private ScratchXServer scratchXServer; // http servder to talk to ScratchX web page
-    private boolean scratchXServerActive = false; // if the http server is active
-    private boolean hasScratchXCommand = false; // a command was sent from ScratchX page
+    byte[] EMPTY_SERIAL_INPUT = new byte[]{}; // clear serial input
 
     /**
      * Constructor
@@ -28,8 +26,6 @@ public class ArduinoThread extends Thread {
     {
         super();
         appState = appState_;
-        scratchXServer = new NanoHttpdScratchXServer();
-        scratchXServerActive = scratchXServer.startMe();
     }
 
     /**
@@ -52,16 +48,7 @@ public class ArduinoThread extends Thread {
                 }
                 if (appState.isPowerOn() && appState.getBluetoothState() == AppState.BluetoothState.CONNECTED && !appState.isPaused())
                 {
-                    byte[] serialInput = appState.isConnectScratchX() ? scratchXServer.getSerialInput() : ScratchXServer.EMPTY_SERIAL_INPUT;
-                    if (Utils.DEBUG_LOOP && serialInput.length > 0)
-                    {
-                        Log.wtf(LOG_TAG, "loop serial input:" + new String(serialInput));
-                    }
-                    boolean newHasScratchXCommand = serialInput.length > 0;
-                    if (newHasScratchXCommand || hasScratchXCommand) {
-                        appState.setScratchXCommand(newHasScratchXCommand);
-                    }
-                    hasScratchXCommand = newHasScratchXCommand;
+                    byte[] serialInput = EMPTY_SERIAL_INPUT;
                     byte[] bluetoothInput = receiveBluetooth();
                     if (bluetoothInput.length > 0 && Utils.DEBUG_LOOP) {
                         Log.wtf(LOG_TAG, "bluetooth receive:" + new String(bluetoothInput));
@@ -81,9 +68,6 @@ public class ArduinoThread extends Thread {
                     }
                     if (serialOutput.length > 0)
                     {
-                        if (appState.isConnectScratchX()) {
-                            scratchXServer.setSerialOutput(serialOutput);
-                        }
                         if (Utils.DEBUG_LOOP)
                         {
                             Log.wtf(LOG_TAG, "loop serial output:" + new String(serialOutput));
@@ -96,8 +80,7 @@ public class ArduinoThread extends Thread {
                             Log.wtf(LOG_TAG, "loop bluetooth send:" + new String(bluetoothOutput));
                         }
                     }
-                    appState.setScratchXing(stateIndicators[0] == 1);
-                    appState.setScratchState(stateIndicators[1]);
+                    appState.setTrimState(stateIndicators[0]);
                     appState.setGamepadState(stateIndicators[2]);
                     if (errorOutput.length > 0 && Utils.DEBUG_LOOP)
                     {

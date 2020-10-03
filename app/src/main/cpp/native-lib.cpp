@@ -1,19 +1,25 @@
 #include <jni.h>
 #include <string>
 #include <errno.h>
-#include "Vorpal-Hexapod-Gamepad_ino.h"
+#include "Vorpal-Hexapod-Gamepad__v2_ino.h"
+#include "Vorpal-Hexapod-Gamepad__v3_ino.h"
 #include "SdFat.h"
 #include <iterator>
 
-extern SoftwareSerial BlueTooth;
-extern byte TrimMode;
-extern int SRecState;
-extern int GRecState;
+extern SoftwareSerial& BlueTooth__V2;
+extern SoftwareSerial& BlueTooth__V3;
+
+extern byte& TrimMode__V2;
+extern byte& TrimMode__V3;
+
+extern int& GRecState__V2;
+extern int& GRecState__V3;
 
 char internalFileDir[BUFFER_SIZE];
 char errorMessage[BUFFER_SIZE];
 SoftwareSerial Serial = SoftwareSerial();
 bool isSDcard;
+int vorpalVersion;
 
 // https://stackoverflow.com/questions/11558899/passing-a-string-to-c-code-in-android-ndk
 std::string ConvertJString(JNIEnv* env, jstring str)
@@ -65,7 +71,11 @@ jbyteArray charArrayToJByteArray(JNIEnv *env, char* buffer)
 
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_com_vorpalrobotics_hexapod_MainActivity_arduinoSetup(JNIEnv *env, jobject) {
-    setup();
+    if (vorpalVersion == 2) {
+        VORPAL_VERSION__V2::setup();
+    } else if (vorpalVersion == 3) {
+        VORPAL_VERSION__V3::setup();
+    }
     std::vector<byte> value = Serial.getOutput();
     Serial.clearOutput();
     return stdVectorToJByteArray(env, value);
@@ -75,14 +85,18 @@ extern "C" JNIEXPORT jobjectArray JNICALL
 Java_com_vorpalrobotics_hexapod_ArduinoThread_arduinoLoop(JNIEnv *env, jobject, jbyteArray serialInput, jbyteArray bluetoothInput) {
     errorMessage[0] = '\0';
     Serial.setInput(jByteArrayToStdVector(env, serialInput));
-    BlueTooth.setInput(jByteArrayToStdVector(env, bluetoothInput));
-    loop();
+    SoftwareSerial& BlueTooth = (vorpalVersion == 2) ? BlueTooth__V2 : BlueTooth__V3;
+    if (vorpalVersion == 2) {
+        VORPAL_VERSION__V2::loop();
+     } else if (vorpalVersion == 3) {
+         VORPAL_VERSION__V3::loop();
+    }
     BlueTooth.clearInput();
     jobjectArray ret = (jobjectArray)env->NewObjectArray(4,env->FindClass("[B"),nullptr);
     std::vector<byte> indicators;
-    indicators.push_back(TrimMode);
-    indicators.push_back((byte)SRecState);
-    indicators.push_back((byte)GRecState);
+    indicators.push_back((vorpalVersion == 2) ? TrimMode__V2 : TrimMode__V3);
+    indicators.push_back((byte)0/*SRecState*/);
+    indicators.push_back((byte)((vorpalVersion == 2) ? GRecState__V2 : GRecState__V3));
     env->SetObjectArrayElement(ret,0,stdVectorToJByteArray(env, Serial.getOutput()));
     env->SetObjectArrayElement(ret,1,stdVectorToJByteArray(env, BlueTooth.getOutput()));
     env->SetObjectArrayElement(ret,2,stdVectorToJByteArray(env, indicators));
@@ -123,4 +137,10 @@ extern "C" JNIEXPORT void JNICALL
 Java_com_vorpalrobotics_hexapod_MainActivity_setSDcard(JNIEnv *env, jobject, jboolean isSDcard_)
 {
     isSDcard = isSDcard_;
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_vorpalrobotics_hexapod_MainActivity_setVorpalVersion(JNIEnv *env, jobject,
+                                                              jint vorpalVersion_) {
+    vorpalVersion = vorpalVersion_;
 }

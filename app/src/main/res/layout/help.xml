@@ -334,8 +334,34 @@
             android:text="\n"
             />
         <TextView
-            android:id="@+id/help_preferences_connect_bluetooth_on_startup"
+            android:id="@+id/help_preferences_vorpal_version"
             android:layout_below="@id/help_preferences_sound_detail_crlf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/colorHelpText"
+            android:text="@string/preferences_vorpal_version"
+            />
+        <TextView
+            android:id="@+id/help_preferences_vorpal_version_detail"
+            android:layout_below="@id/help_preferences_vorpal_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorHelpText"
+            android:text="@string/preferences_vorpal_version_summary"
+            />
+        <TextView
+            android:id="@+id/help_preferences_vorpal_version_detail_crlf"
+            android:layout_below="@id/help_preferences_vorpal_version_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/colorHelpText"
+            android:text="\n"
+            />
+        <TextView
+            android:id="@+id/help_preferences_connect_bluetooth_on_startup"
+            android:layout_below="@id/help_preferences_vorpal_version_detail_crlf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -395,32 +421,6 @@
         <TextView
             android:id="@+id/help_preferences_bluetooth_paired_devices_URL_crlf"
             android:layout_below="@id/help_preferences_bluetooth_paired_devices_URL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/colorHelpText"
-            android:text="\n"
-            />
-        <TextView
-            android:id="@+id/help_preferences_connect_to_scratchx"
-            android:layout_below="@id/help_preferences_bluetooth_paired_devices_URL_crlf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/colorHelpText"
-            android:text="@string/preferences_connect_to_scratchx"
-            />
-        <TextView
-            android:id="@+id/help_preferences_connect_to_scratchx_detail"
-            android:layout_below="@id/help_preferences_connect_to_scratchx"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorHelpText"
-            android:text="@string/preferences_connect_to_scratchx_summary"
-            />
-        <TextView
-            android:id="@+id/help_preferences_connect_to_scratchx_detail_crlf"
-            android:layout_below="@id/help_preferences_connect_to_scratchx_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"

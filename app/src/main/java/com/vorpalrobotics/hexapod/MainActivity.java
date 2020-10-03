@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity
     private AppState appState;
     // States for the Scratch Record/play function
 //  private static final byte SREC_STOPPED    = 0;
-    private static final byte SREC_RECORDING  = 1;
-    private static final byte SREC_PLAYING    = 2;
+//    private static final byte SREC_RECORDING  = 1;
+//    private static final byte SREC_PLAYING    = 2;
 
     // States for the Gamepad record/play function
 //  private static final byte GREC_STOPPED   = 0;
@@ -122,6 +122,29 @@ public class MainActivity extends AppCompatActivity
     /**
      * set up the buttons on the main page
      */
+    private void activateMenu()
+    {
+        final ImageButton helpButton = findViewById(R.id.button_id_HELP);
+        helpButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                help();
+            }
+        });
+        final ImageButton settingsButton = findViewById(R.id.button_id_SETTINGS);
+        settingsButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                preferences();
+            }
+        });
+    }
+
+    /**
+     * set up the buttons on the main page
+     */
     private void activateButtons()
     {
         final Button powerOnButton = findViewById(R.id.button_id_POWER_ON);
@@ -138,22 +161,6 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 powerOff();
-            }
-        });
-        final ImageButton helpButton = findViewById(R.id.button_id_HELP);
-        helpButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                help();
-            }
-        });
-        final ImageButton settingsButton = findViewById(R.id.button_id_SETTINGS);
-        settingsButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                preferences();
             }
         });
         final ImageButton bluetoothButton = findViewById(R.id.button_id_BLUETOOTH);
@@ -193,10 +200,10 @@ public class MainActivity extends AppCompatActivity
     {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         setSDcard(prefs.getBoolean("SDcard", true));
+        setVorpalVersion(Integer.parseInt(prefs.getString("vorpalVersion", "3")));
         appState.setSound(prefs.getBoolean("sound", true));
         appState.setBluetoothAddress(prefs.getString("bluetoothAddress", ""));
         appState.setConnectBluetoothAutomatically(prefs.getBoolean("connectBluetoothAutomatically", true));
-        appState.setConnectScratchX(prefs.getBoolean("connectScratchX", false));
         displayAppState();
     }
 
@@ -214,18 +221,9 @@ public class MainActivity extends AppCompatActivity
      */
     private void displayStateIcon() {
         int newStateIcon = 0; // no state icon
-        if (appState.isScratchXCommand())
-        {
-            newStateIcon = R.drawable.kisspng_scratch_cat;
-        } else if (appState.isScratchXing())
+        if (appState.getTrimState() == (byte)1)
         {
             newStateIcon = R.drawable.trimming_state;
-         } else if (appState.getScratchState() == SREC_RECORDING)
-        {
-            newStateIcon = R.drawable.kisspng_scratch_cat;
-        } else if (appState.getScratchState() == SREC_PLAYING)
-        {
-            newStateIcon = R.drawable.kisspng_scratch_cat;
         } else if (appState.getGamepadState() == GREC_RECORDING)
         {
             newStateIcon = R.drawable.gamepad_recording_state;
@@ -256,9 +254,6 @@ public class MainActivity extends AppCompatActivity
             setMessage(appState.getBluetoothState().getMessageId(), R.color.colorMessageError);
         } else if (!appState.isPowerOn()) {
             setMessage(R.string.message_off, R.color.colorMessageError);
-        } else if (appState.isScratchXCommand())
-        {
-            setMessage(R.string.message_scratchx_control, R.color.colorMessageScratch);
         } else {
             String nameOfResource = "message_action_" + modeButton + dPadButton;
             int resourceId = MainActivity.this.getResources().getIdentifier(nameOfResource, "string", MainActivity.this.getPackageName());
@@ -359,6 +354,7 @@ public class MainActivity extends AppCompatActivity
         appState = new AppState();
         setContentView(R.layout.activity_main);
         boolean hasBluetooth = checkHasBluetooth();
+        activateMenu();
         if (hasBluetooth)
         {
             loadPreferences();
@@ -553,4 +549,6 @@ public class MainActivity extends AppCompatActivity
     public native void setInternalFileDir(String internalFileDir);
 
     public native void setSDcard(boolean isSDcard);
+
+    public native void setVorpalVersion(int vorpalVersion);
 }

@@ -1,5 +1,8 @@
+//!!!!! modifications marked with //!!!!!
+#include "SdFat.h" //!!!!! modified from <> to "", moved to top, out of namespace
+#include "SoftwareSerial.h" //!!!!! modified from <> to "", moved to top, out of namespace
+namespace VORPAL_VERSION__V2 { //!!!!! namespace for different versions
 // Copyright (C) 2017 Vorpal Robotics, LLC.
-
 const char *Version = "#GV2r1";  // this version adds SD card formatting when booting while holding down R4
 
 // This is the code that runs on the robot in the Vorpal The Hexapod project.
@@ -81,10 +84,10 @@ int debugmode = 0;          // Set to 1 to get more debug messages. Warning: thi
 
 #define USE_SDIO 0
 
-#include "SdFat.h" ////////////// modified from <> to ""
+//!!!!! #include <SdFat.h> //!!!!! moved to top, out of namespace
 SdFat SD;
 
-#include "SoftwareSerial.h" ////////////// modified from <> to ""
+//!!!!! #include <SoftwareSerial.h> //!!!!! moved to top, out of namespace
 
 //////////////////////////////////////////
 // Gamepad layout, using variable names used in this code:
@@ -1592,3 +1595,7 @@ void loop() {
         NextTransmitTime = millis() + REC_FRAMEMILLIS;
     }
 }
+} //!!!!! namespace VORPAL_VERSION__V2namespace VORPAL_VERSION__V2
+SoftwareSerial& BlueTooth__V2 = VORPAL_VERSION__V2::BlueTooth; //!!!!! for extern reference
+byte& TrimMode__V2 = VORPAL_VERSION__V2::TrimMode; //!!!!! for extern reference;
+int& GRecState__V2 = VORPAL_VERSION__V2::GRecState; //!!!!! for extern reference;

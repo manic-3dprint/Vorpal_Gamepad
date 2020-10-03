@@ -39,7 +39,6 @@
     <string name="message_no_connection">No Connection</string>
     <string name="message_connecting">Connecting ...</string>
     <string name="message_bluetooth_error">Bluetooth Error</string>
-    <string name="message_scratchx_control">ScratchX control</string>
 
     <string name="message_action_W1s">Walk Low step</string>
     <string name="message_action_W1w">Walk Low step - stomp/honk</string>
@@ -141,13 +140,13 @@
     <string name="preferences_use_SDcard_summary">simulate an SD card in the Gamepad for storage</string>
     <string name="preferences_sound">Sound</string>
     <string name="preferences_sound_summary">Click noise for key press</string>
+    <string name="preferences_vorpal_version">Vorpal Version</string>
+    <string name="preferences_vorpal_version_summary">Version of the Vorpal Gamepad\n(click here to select from a list of versions)</string>
     <string name="preferences_connect_bluetooth_automatically">Connect Automatically</string>
     <string name="preferences_connect_bluetooth_automatically_summary">Connect to Bluetooth automatically</string>
-    <string name="preferences_bluetooth_device">Bluetooth Devices (device must be set to 38400)</string>
-    <string name="preferences_bluetooth_device_summary">Select the Bluetooth Device for the Vorpal robot (click here to display list of devices)</string>
+    <string name="preferences_bluetooth_device">Bluetooth Devices (must be 38400)</string>
+    <string name="preferences_bluetooth_device_summary">Select the Bluetooth Device for the Vorpal robot\n(click here to select from a list of devices)</string>
     <string name="preferences_bluetooth_paired_devices_help">note - The Bluetooth Device must be paired with this Android device, see:</string>
     <string name="preferences_bluetooth_paired_devices_URL">https://support.google.com/android/answer/9075925?hl=en</string>
-    <string name="preferences_connect_to_scratchx">ScratchX</string>
-    <string name="preferences_connect_to_scratchx_summary">Connect to ScratchX over wifi</string>
     <string name="preferences_done">Done</string>
 </resources>
