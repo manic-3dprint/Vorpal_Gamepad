@@ -9,12 +9,8 @@
 #include <string>
 #include <fstream>
 extern bool isSDcard;
-//extern byte TrimMode;
-//extern int SRecState;
-//extern int GRecState;
 extern byte& TrimMode__V2;
 extern byte& TrimMode__V3;
-//extern int SRecState;
 extern int& GRecState__V2;
 extern int& GRecState__V3;
 

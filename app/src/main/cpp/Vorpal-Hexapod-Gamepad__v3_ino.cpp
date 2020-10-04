@@ -86,7 +86,8 @@ int debugmode = 0;          // Set to 1 to get more debug messages. Warning: thi
 SdFat SD;
 
 //!!!!! #include "SoftwareSerial.h" //!!!!! moved to top, out of namespace
-void setBeep(int f, int d); //!!!!! forward reference
+//!!!!! #include <EEPROM.h> //!!!!! moved to top, out of namespace
+void setBeep(int f, int d); //!!!!! added forward reference
 
 //////////////////////////////////////////
 // Gamepad layout, using variable names used in this code:

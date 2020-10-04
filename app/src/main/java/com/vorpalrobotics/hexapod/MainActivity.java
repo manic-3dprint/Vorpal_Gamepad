@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity
     private final Handler timerHandler = new Handler(); // Handler for timer
     private View main = null; // view for this activity
     private AppState appState;
-    // States for the Scratch Record/play function
-//  private static final byte SREC_STOPPED    = 0;
-//    private static final byte SREC_RECORDING  = 1;
-//    private static final byte SREC_PLAYING    = 2;
+
+    // trim states
+    private static final byte TRIM_OFF  = 0;
+    private static final byte TRIM_ON = 1;
 
     // States for the Gamepad record/play function
-//  private static final byte GREC_STOPPED   = 0;
+    private static final byte GREC_STOPPED   = 0;
     private static final byte GREC_RECORDING = 1;
     private static final byte GREC_PLAYING   = 2;
     private static final byte GREC_PAUSED    = 3;
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity
                 switch (event.getAction())
                 {
                     case MotionEvent.ACTION_DOWN:
+                    case MotionEvent.ACTION_POINTER_DOWN:
                         if (appState.isSound())
                         {
                             main.playSoundEffect(SoundEffectConstants.CLICK);
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity
                         }
                         break;
                     case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_POINTER_UP:
                     case MotionEvent.ACTION_CANCEL:
                         clickButton(buttonName, false);
                         if (Utils.DEBUG)
@@ -221,7 +223,7 @@ public class MainActivity extends AppCompatActivity
      */
     private void displayStateIcon() {
         int newStateIcon = 0; // no state icon
-        if (appState.getTrimState() == (byte)1)
+        if (appState.getTrimState() == TRIM_ON)
         {
             newStateIcon = R.drawable.trimming_state;
         } else if (appState.getGamepadState() == GREC_RECORDING)
@@ -403,6 +405,8 @@ public class MainActivity extends AppCompatActivity
     private void powerOff()
     {
         appState.setPowerOn(false);
+        appState.setTrimState(TRIM_OFF);
+        appState.setGamepadState(GREC_STOPPED);
         Context context = getApplicationContext();
         Button powerOnButton = findViewById(R.id.button_id_POWER_ON);
         powerOnButton.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPowerButton));
