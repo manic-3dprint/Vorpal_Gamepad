@@ -40,7 +40,7 @@ On your Android device:
 - The message at the bottom will say "No Paired Device".
 - Click on the Settings gear icon on the right of the page, find Bluetooth Devices, click on it.
 - There will be a list of all paired bluetooth devices, select the bluetooth for the Robot.
-- Make sure that the correct version of the Vorpal Hexapod is selected - all new kits will use version 3
+- Make sure that the correct version of the Vorpal Hexapod is selected - all new kits (starting July 15, 2020) will use version 3.
 - You can modify the other Preferences (recommended to leave Connect Automatically to on).
 - Return to the main screen.
 - The message should say No Connection and the Bluetooth icon will be black.
@@ -72,10 +72,17 @@ On the bottom is a message line.
 - start the app and turn it on before starting the robot
 - make sure the robot dial is set to RC
 - make sure the app is connected to the correct Bluetooth Device
-- make sure the app is using the correct version of the Vorpal Hexapod
+- make sure the app is using the correct version of the Vorpal Hexapod. The Robot will not work correctly, or may not work at all, with the wrong version
+  all new kits (starting July 15, 2020) will use version 3
 - if it cannot connect, make sure the speed of the HC-05 in the robot is set to 38400
-- if you press a mode button too quickly, it may not register. You should press until you hear a beep.
+- if you press a mode button too quickly, it may not register (hold down the key)
 - Fight mode F3 and F4 do not work correctly, too slow
+- if the app cannot connect, stops connecting, or there are any other problems, try:
+  * turn off the Robot, and close the app
+  * start the app
+  * make sure the preferences are correct
+  * turn on the Robot
+  * if "Connect Automatically" is selected, the app should connect to the Robot after a few seconds, and the Bluetooth icon will turn blue
 
 ## Building
 

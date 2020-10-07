@@ -251,8 +251,7 @@ public class MainActivity extends AppCompatActivity
      */
     private void displayMessage()
     {
-        if (appState.getBluetoothState() != BluetoothState.CONNECTED)
-        {
+        if (appState.getBluetoothState() != BluetoothState.CONNECTED) {
             setMessage(appState.getBluetoothState().getMessageId(), R.color.colorMessageError);
         } else if (!appState.isPowerOn()) {
             setMessage(R.string.message_off, R.color.colorMessageError);
