@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Vorpal_Gamepad.iml" filepath="$PROJECT_DIR$/Vorpal_Gamepad.iml" group="Vorpal_Gamepad" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Vorpal_Gamepad/app" />
+      <module fileurl="file://$PROJECT_DIR$/Vorpal_Gamepad.iml" filepath="$PROJECT_DIR$/Vorpal_Gamepad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Vorpal_Gamepad.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Vorpal_Gamepad.app.iml" />
     </modules>
   </component>
 </project>
