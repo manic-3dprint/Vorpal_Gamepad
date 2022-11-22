@@ -1,4 +1,6 @@
 # Vorpal_Gamepad
+(NOTE - this app is no longer supported)
+
 This is an Android app to replace the Gamepad for the Vorpal Hexapod Robot.
 
 !!! This app is not associated in any way with the Vorpal Robotics Corporation !!!
